@@ -20,5 +20,24 @@ describe("Vending Machine:", () => {
         expect(vendingM.dispenseProduct("B1", 1.25)).toEqual("sprite");
       });
     });
+    describe("When selection = 'A2' whit exact change ", () => {
+      it("it should return sprite with no change", () => {
+        expect(vendingM.dispenseProduct("A2", 1.25)).toEqual("snicker");
+      });
+    });
+    describe("When selection = 'B2' whit  changeInput='2' ", () => {
+      it("it should return product name and change back", () => {
+        expect(vendingM.dispenseProduct("B1", 2)).toEqual(
+          "your change 0.75 quarter"
+        );
+      });
+    });
+    describe("When restocking a full slot B1", () => {
+      it("it should return product name and unit", () => {
+        expect(vendingM.dispenseProduct("B1", 20)).toEqual(
+          "this slot is already full"
+        );
+      });
+    });
   });
 });
