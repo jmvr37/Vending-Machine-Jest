@@ -34,7 +34,7 @@ describe("Vending Machine:", () => {
     });
     describe("When restocking a full slot B1", () => {
       it("it should return product name and unit", () => {
-        expect(vendingM.restockProduct("B1")).toThrow(
+        expect(vendingM.restockProduct("B1")).toEqual(
           "this slot is already full (50) "
         );
       });
@@ -42,6 +42,13 @@ describe("Vending Machine:", () => {
     describe("When restocking a full slot 1 dollar", () => {
       it("it should return change name and quantity", () => {
         expect(vendingM.restockChange("B1")).toEqual(
+          "this slot is already full (50)"
+        );
+      });
+    });
+    describe("When restocking 1 dollar ", () => {
+      it("should throw an error 'this slot is already full (50)", () => {
+        expect(() => vendingM.restockChange("1 dollar")).toThrow(
           "this slot is already full (50)"
         );
       });
